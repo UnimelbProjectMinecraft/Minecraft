@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <About>
+    <Summary>Cliff walking mission based on Sutton and Barto.</Summary>
+  </About>
+
+  <ServerSection>
+    <ServerInitialConditions>
+        <Time>
+          <StartTime>10000</StartTime>
+          <AllowPassageOfTime>false</AllowPassageOfTime>
+        </Time>
+      <Weather>clear</Weather>
+    </ServerInitialConditions>
+    <ServerHandlers>
+      <FlatWorldGenerator forceReset="true"  generatorString="3;7,220*1,5*3,2;3;,biome_1"/>
+      <DrawingDecorator>
+        <DrawCuboid x1="0" y1="226" z1="0" x2="0" y2="230" z2="11" type="stonebrick" />            <!-- limits of our arena -->
+        <DrawCuboid x1="0" y1="226" z1="0" x2="11" y2="230" z2="0" type="stonebrick" />            <!-- limits of our arena -->
+        <DrawCuboid x1="11" y1="226" z1="0" x2="11" y2="230" z2="11" type="stonebrick" />            <!-- limits of our arena -->
+        <DrawCuboid x1="11" y1="226" z1="11" x2="0" y2="230" z2="11" type="stonebrick" />            <!-- limits of our arena -->
+        <DrawBlock x="2" y="226" z="8" type="gold_block"/>
+        <DrawBlock x="3" y="226" z="3" type="diamond_block"/>
+        <DrawBlock x="6" y="226" z="5" type="iron_block"/>
+        <DrawBlock x="6" y="226" z="7" type="redstone_block"/>
+      </DrawingDecorator>
+      <ServerQuitFromTimeUp timeLimitMs="200000"/>
+      <ServerQuitWhenAnyAgentFinishes/>
+    </ServerHandlers>
+  </ServerSection>
+
+  <AgentSection mode="Survival">
+    <Name>Phoebe</Name>
+    <AgentStart>
+      <Placement x="4.5" y="227.0" z="1.5" pitch="30" yaw="0"/>
+    </AgentStart>
+    <AgentHandlers>
+      <DiscreteMovementCommands/>
+      <ObservationFromFullStats/>
+      <RewardForTouchingBlockType>
+        <Block reward="100.0" type="gold_block" behaviour="onceOnly"/>
+        <Block reward="10.0" type="diamond_block" behaviour="onceOnly"/>
+        <Block reward="10.0" type="iron_block" behaviour="onceOnly"/>
+        <Block reward="10.0" type="redstone_block" behaviour="onceOnly"/>
+        <Block reward="10.0" type="quartz_block" behaviour="onceOnly"/>
+        <Block reward="10.0" type="hay_block" behaviour="onceOnly"/>
+      </RewardForTouchingBlockType>
+      <RewardForSendingCommand reward="-1" />
+      <AgentQuitFromTouchingBlockType>
+            <Block type="gold_block"/>
+      </AgentQuitFromTouchingBlockType>
+    </AgentHandlers>
+  </AgentSection>
+
+</Mission>
