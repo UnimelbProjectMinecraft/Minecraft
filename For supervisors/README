@@ -1,6 +1,6 @@
 1. Download all files in this folder
 2. put all thse files in the \yourpath\Malmo-0.31.0-Windows-64bit_Python3.6\Python_Examples (we default that you have already downloaded this zip )
-3.We did hundreds on experiments, but we just choose four instances for you to have a look
+3.We did hundreds o experiments, but we just choose four instances for you to have a look
 4.run double_q.py to have a look at the training process based on double Q learning.
 5.run single_q.py to have a look at the training process based on Q learning.
 6.run one_instance_dynamic.py to have look at that two agents collaborate to finish the scenario after trained successfully by dynamic planing.
